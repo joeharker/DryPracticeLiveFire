@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Target</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- ReSharper disable once CssBrowserCompatibility -->
+    <style>
+        @media print {.noPrint {
+                          display: none !important;
+                      } }
+        .noPrint {
+            color: silver;
+            font-weight: bold;
+        }
+
+        body {
+            padding: 0;
+            margin: 0;
+        }
+        pre {
+            padding: 0;
+            margin: 0;
+        }
+        #head {
+            padding: 0;
+            margin: 20px 20px 0 20px;
+        }
+        #foot {
+            padding: 0;
+            margin: 0 20px 0 20px;
+        }
+        .center-v-wrapper {display: table; width: 100%; height: 100%; }
+        .center-v-cell {display: table-cell; vertical-align: middle; }
+        .center-h {text-align: center; margin: auto; }
+        .circle {
+            text-align: center;
+            border-radius: 50%;
+            border-style: solid;
+            border-width: 10px;
+        }
+        .label {
+            width: 0;
+            height: 0;
+        }
+        .highlight {
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+	<div class="noPrint center-h">
+		NOTE: set your print margins to none for a full <span id="diameter"></span>" target<br />
+		<br />
+		When standing with your front sight <span class="distance"></span> feet away from this target,<br />
+		the rings on this target simulate a <span id="targetWidth"></span>" ring at the listed distances
+	</div>
+	<div id="head">
+		<pre>Set a goal including a short session (20 min or less) Do not practice to fatigue.
+Control your dry practice environment including distractions.
+Unload the weapon and yourself.
+Place the ammunition in another room.
+Place this target on a surface capable of stopping a bullet <span class="distance"></span> feet from your practice muzzle line.
+
+Establish a proper mindset.
+Chamber Check, Mag check.
+<span class="highlight">Say out loud</span> "The weapon is unloaded. I am ready for dry practice."
+Chamber check, mag check again!</pre>
+	</div>
+<div id="container"></div>
+<div id="foot">
+	<pre>When you are done, remove the target.
+<span class="highlight">Say out loud</span> "The weapon is considered hot. Dry practice is over."
+Never draw or take another shot after dry practice is over!</pre>
+</div>
+<script>
+	//all measurments in inches
+	var target = 12,	//actual target diameter
+		diameter = 8.5,	//first ring diameter (page width)
+		angle,
+		distance,
+        d,
+        r,
+		outside = document.getElementById('container'),
+		rings = [		//must be listed closest first sort order
+			{'color': 'purple', 'label': '3m', 'distance': 118},
+			{'color': 'black', 'label': '5m', 'distance': 197},
+			{'color': 'blue', 'label': '7m', 'distance': 276},
+			{'color': 'red', 'label': '10m', 'distance': 394},
+			{'color': 'green', 'label': '15m', 'distance': 591}
+		];
+
+	//calculate distance based on a full paper width print
+	angle = Math.atan(target / rings[0].distance);
+	distance = diameter / Math.tan(angle);
+	//a shorter distance restriction can be used if needed
+
+	//display the measurments
+	var distances = document.getElementsByClassName('distance');
+	document.getElementById('diameter').innerHTML = diameter.toFixed(1);
+	document.getElementById('targetWidth').innerHTML = target.toFixed(1);
+	for (d = 0; d < distances.length; d += 1) {
+		distances[d].innerHTML = (distance / 12).toFixed(1);	//from inches to feet
+	}
+
+	//create the rings
+	for (r = 0; r < rings.length; r += 1) {
+		var div = document.createElement('div');
+
+		angle = Math.atan(target / rings[r].distance);
+		//console.log(angle * 180 / Math.PI);	//convert to deg >> * 180 / Math.PI
+		diameter = distance * Math.tan(angle);
+
+		div.className = 'circle center-h';
+		div.style.width = diameter + 'in';
+		div.style.height = diameter + 'in';
+		div.style.border.color = rings[r].color;
+		div.style.color = rings[r].color;
+
+		div.innerHTML = '<div class="label center-h">' + rings[r].label + '<\/div><div class="center-v-wrapper"><div id="c' + r + '" class="center-v-cell center-h"><\/div><\/div>';
+
+		outside.innerHTML += div.outerHTML;
+		outside = document.getElementById('c' + r);
+	}
+</script>
+</body>
+</html>
