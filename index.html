@@ -1,0 +1,52 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Handgun Practice Timer</title>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+	<meta name="format-detection" content="telephone=no" />
+	<meta name="msapplication-tap-highlight" content="no" />
+    <meta name="description" content="
+Practice drills for live fire and dry practice handgun presenting from the holster.
+Inspired by my training at Front Sight, IDPA and USPSA competitions.
+20 standard drills each with 0 to 2 second random start times.
+8 emergency drills mixed in randomly.
+After action drill reminders and wisely placed tactical reloads.
+Emergency reloads optimized for 10 round magazines and neurocognitive training.
+Type 3 malfunctions with mag drop or retention decisions.
+Printable target calculated to simulate a thoracic cavity at 3, 5, 7, 10 and 15 meters.
+Safety instructions reminded on the target and before each app practice.
+Extra dry practice safety instructions.
+Voice commands with visual and audio queues.
+Times adjusted for single press practice.
+	">
+	<link href="css/index.css" rel="stylesheet" />
+    <script src="js/pages.js"></script>
+</head>
+<body>
+<header class="index-header hot">
+	<a class="button home-button hot js-page-home" href="#">&#9750;</a>
+	Practice Timer
+	<a class="button settings-button hot" href="#pages/settings/settings.htm">&#9881;</a>
+</header>
+	<div class="index-torso">
+	    <!--
+			js-page's load async starting in the order they are listed
+			and only the first is set to visible at load time
+			only one will ever be visible at a time
+		-->
+		<div id="pages/instructions/instructions.htm" class="js-page">
+			<div class="middle delay-show">This page uses javascript</div>
+		</div>
+	    <div id="cordova.js" class="js-page"></div>
+		<div id="pages/practice/practice.htm" class="js-page"></div>
+	    <div id="pages/timer/timer.htm" class="js-page"></div>
+		<div id="pages/resources/resources.htm" class="js-page"></div>
+		<div id="pages/settings/settings.htm" class="js-page"></div>
+        <div id="js/admob.js" class="js-page"></div>
+	</div>
+	<footer class="index-footer hot">
+		Advertisements:
+	</footer>
+</body>
+</html>

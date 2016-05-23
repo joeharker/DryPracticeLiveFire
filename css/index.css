@@ -1,0 +1,152 @@
+﻿/* layout */
+html, body {
+    padding: 0;
+    margin: 0;
+	font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+}
+
+.index-header {
+    /*sticky*/
+	position: fixed;
+	width: 100%;
+	top: 0;
+	height: 50px;				/* head height */
+
+    /*style*/
+    font-weight: bold;
+    font-size: 30px;
+    display: flex;              /*//ignore jslint*/
+    align-items: center;        /*//ignore jslint*/
+    justify-content: center;	/*//ignore jslint*/
+	height: 50px;
+}
+
+.index-torso{
+    /*sticky*/
+    position: absolute;
+    top: 50px;					/* head height */
+    bottom: 20px;				/* foot height */
+    width: 100%;				/* can use left: 0; right: 0; as well */
+    overflow-y: auto;
+    -webkit-overflow-scrolling: touch;
+}
+
+.index-footer {
+    /*sticky*/
+	position: fixed;
+	width: 100%;
+	bottom: 0;
+	height: 20px;				/* foot height */
+
+    /*style*/
+    text-align: center;
+	vertical-align: bottom;
+}
+
+.content {
+	margin: 5px;
+}
+
+/* widgets */
+a.button {
+    -webkit-appearance: button;
+    -moz-appearance: button;
+    appearance: button;
+    text-decoration: none;
+	text-align: center;
+    padding: 5px 10px;
+	margin: 5px;
+}
+
+.index-header .button {
+    position: absolute;
+    top: 0;
+	margin: 0!important;
+}
+
+.home-button {
+    left: 0;
+}
+
+.settings-button {
+    right: 0;
+}
+
+/* animations */
+.delay-show {
+	animation-name: delay;
+    animation-duration: 2s;
+}
+@keyframes delay { 
+	0%   {visibility: hidden;}
+    90%  {visibility: hidden;}
+    100% {visibility: visible;}
+}
+
+/* colors */
+.hot {
+	background-color: #580E0E;
+	color: white;
+}
+
+.warm {
+	background-color: #B2B03F;
+	color: black;
+}
+
+.cool {
+	background-color: #124D72;
+	color: white;
+}
+
+.cold {
+	background-color: #31A7F1;
+	color: white;
+}
+
+.yes {
+	background-color: #05581D;
+	color: white;
+}
+
+.no {
+	background-color: #580E0E;
+	color: white;
+}
+
+/* sizes */
+.widest {
+	width: 100%;
+}
+
+/* flex box */
+.container-row {
+    display: flex; /* or inline-flex */
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+}
+
+.container-column {
+    display: flex; /* or inline-flex */
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+}
+
+.item-fill {
+    flex-grow: 1; /* default 0 */
+}
+
+.item {
+    flex-grow: 0;
+}
+
+.middle {
+    height: 100vw;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}

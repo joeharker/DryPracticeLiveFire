@@ -1,0 +1,22 @@
+﻿.timmer-header {
+	position: fixed;
+	width: 100%;
+	top: 50px;				/* outer head height */
+	height: 5px;			/* this head height */
+}
+
+.timmer-torso{
+    position: absolute;
+    top: 5px;				/* this head height */
+    bottom: 55px;				/* this foot height */
+    width: 100%;              /* can use left: 0; right: 0; as well */
+    overflow-y: auto;
+    -webkit-overflow-scrolling: touch;
+}
+
+.timmer-footer {
+	position: fixed;
+	width: 100%;
+	bottom: 20px;			/* outer foot height */
+	height: 55px;			/* this foot height */
+}
