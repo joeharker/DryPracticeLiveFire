@@ -1,7 +1,7 @@
-﻿(function () {
+﻿(function (settings) {
 	'use strict';
 
-	getObjects('settingsService', settingsService);
+	getObjects('settings', settings);
 
 	function getObjects(name, obj) {
 		for (var key in obj) if (obj.hasOwnProperty(key)) (function(thatkey) {
@@ -43,4 +43,4 @@
 			}
 		})(key);
 	}
-})();
+})(settingsService);

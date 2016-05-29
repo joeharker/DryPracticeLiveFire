@@ -1,5 +1,5 @@
-(function () {
+(function (settings) {
 	'use strict';
 
-	document.getElementById('idea').innerHTML = settingsService.getIdea() + '<br />';
-})();
+	document.getElementById('idea').innerHTML = settings.getIdea() + '<br />';
+})(settingsService);
