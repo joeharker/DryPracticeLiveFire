@@ -3,6 +3,7 @@
 
 	var lastPage = '';
 	var defaultPage = '';
+	var lastHideClass = '';
 	var queued = [];
 	var ready = [];
 
@@ -119,23 +120,38 @@
     	for (var s = 0; s < scripts.length; s++) {
     		scriptGet(scripts[s].path, scripts[s].requires);
     	}
-	}
+    }
+
+    function hideCurrentPageButtons(newPage) {
+    	var thisHideClass = '';
+    	var regex = new RegExp(/([^/]+)\./, 'g');
+    	var match = regex.exec(newPage);
+
+    	if (match !== null) {
+    		thisHideClass = 'js-page-'+ match[1];
+    	}
+
+    	var thisButtons = document.getElementsByClassName(thisHideClass);
+    	for (var n = 0; n < thisButtons.length; n++) {
+    		thisButtons[n].style.display = 'none';
+    	}
+
+    	var lastButtons = document.getElementsByClassName(lastHideClass);
+    	for (var n = 0; n < lastButtons.length; n++) {
+    		lastButtons[n].style.display = 'inline';
+    	}
+
+    	lastHideClass = thisHideClass;
+    }
 
 	//events
 	window.onhashchange = function () {
 		var newPage = window.location.hash.replace('#', '');
-		var homeButtons = document.getElementsByClassName('js-page-home');
 
 		if (newPage.length === 0) {
 			newPage = defaultPage;
-			for (var n = 0; n < homeButtons.length; n++) {
-				homeButtons[n].style.display = 'none';
-			}
-		} else {
-			for (var n = 0; n < homeButtons.length; n++) {
-				homeButtons[n].style.display = 'inline';
-			}
 		}
+		hideCurrentPageButtons(newPage);
 
 		if (document.getElementById(newPage) !== null) {
 			document.getElementById(lastPage).style.display = 'none';

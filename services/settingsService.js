@@ -15,22 +15,6 @@ var settingsService = (function (memory) {
 		return this.ideas[Math.floor(Math.random() * this.ideas.length)];
 	}
 
-	//window.onhashchange = function () {
-	//	var newPage = window.location.hash.replace('#', '');
-	//	var settingsButtons = document.getElementsByClassName('js-page-settings');
-
-	//	console.log(['newPage', newPage]);
-	//	if (newPage.indexOf('/settings/') !== -1) {
-	//		for (var n = 0; n < settingsButtons.length; n++) {
-	//			settingsButtons[n].style.display = 'none';
-	//		}
-	//	} else {
-	//		for (var n = 0; n < settingsButtons.length; n++) {
-	//			settingsButtons[n].style.display = 'inline';
-	//		}
-	//	}
-	//}
-
 	return {
 		ideas: ideas,
 		getIdea: getIdea
