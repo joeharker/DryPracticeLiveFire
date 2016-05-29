@@ -29,6 +29,7 @@
 				sinput.id = name + '-' + thatkey;
 				sinput.type = 'text';
 				sinput.value = value;
+				sinput.classList.add('item-fill');
 				document.getElementById('settings').appendChild(sinput);
 
 				var sdiv = document.createElement('div');

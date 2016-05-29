@@ -138,6 +138,7 @@ a.button {
 
 .item-fill {
     flex-grow: 1; /* default 0 */
+	width: 95%;
 }
 
 .item {
